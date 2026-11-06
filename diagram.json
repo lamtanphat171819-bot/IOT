@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "author": "Quoc Huy",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 4.7, "left": 4.6, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -95.7, "left": 215.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -170,
+      "left": 320,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "soil", "top": 152.3, "left": 220.6, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 300.8,
+      "left": 29.6,
+      "attrs": {}
+    },
+    { "type": "wokwi-led", "id": "fan", "top": 6, "left": -130.6, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-led",
+      "id": "pump",
+      "top": 121.2,
+      "left": -101.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "lamp",
+      "top": 188.4,
+      "left": -101.8,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 252, "left": -171, "attrs": {} },
+    { "type": "wokwi-servo", "id": "roofServo", "top": -85, "left": -155, "attrs": {} },
+    { "type": "wokwi-resistor", "id": "r1", "top": 90, "left": -230, "attrs": { "value": "220" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 150,
+      "left": -230,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 210,
+      "left": -230,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "dht1:VCC", "esp:3V3", "red", [ "v19.2", "h-105.6", "v120.1" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v38.4", "h-96", "v91.4" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v28.8", "h-95.9", "v91.5" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-208.8", "v287" ] ],
+    [ "lcd1:VCC", "esp:VIN", "red", [ "h-372", "v291.7" ] ],
+    [ "lcd1:SDA", "esp:D21", "blue", [ "h-189.6", "v181.9" ] ],
+    [ "lcd1:SCL", "esp:D22", "purple", [ "h-170.4", "v143.5" ] ],
+    [ "soil:VCC", "esp:3V3", "red", [ "v38.4", "h-116", "v-96" ] ],
+    [ "soil:GND", "esp:GND.1", "black", [ "v19.2", "h-86.4", "v-91" ] ],
+    [ "soil:SIG", "esp:D34", "orange", [ "v28.8", "h-278.8", "v-191.8" ] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "v-57.6", "h-48", "v-96" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h9.6", "v-38.8", "h-48", "v-134.3" ] ],
+    [ "ldr1:AO", "esp:D35", "orange", [ "v28.1", "h-220.8", "v-311.5" ] ],
+    [ "esp:D26", "r1:2", "blue", [] ],
+    [ "r1:1", "fan:A", "blue", [ "v19.55", "h115" ] ],
+    [ "fan:C", "esp:GND.2", "black", [ "v19.2", "h86.8", "v86.5" ] ],
+    [ "esp:D27", "r2:2", "green", [] ],
+    [ "r2:1", "pump:A", "green", [ "v17.15", "h115" ] ],
+    [ "pump:C", "esp:GND.2", "black", [ "v10.8", "h58", "v-20.3" ] ],
+    [ "esp:D25", "r3:2", "yellow", [ "h-158.6", "v100.7", "v23.65" ] ],
+    [ "r3:1", "lamp:A", "yellow", [ "v24.35", "h115" ] ],
+    [ "lamp:C", "esp:GND.2", "black", [ "v9.6", "h58", "v-91" ] ],
+    [ "esp:D14", "bz1:2", "red", [ "h-57.6", "v211.3" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v9.6", "h115.2", "v-196.6" ] ],
+    [ "roofServo:V+", "esp:VIN", "red", [ "h80", "v-35" ] ],
+    [ "roofServo:GND", "esp:GND.1", "black", [ "h100", "v70" ] ],
+    [ "roofServo:PWM", "esp:D13", "orange", [ "h115", "v95" ] ]
+  ],
+  "dependencies": {}
+}
